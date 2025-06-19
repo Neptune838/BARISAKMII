@@ -19,7 +19,6 @@
       user-select: none;
       position: relative;
     }
-
     #message {
       font-size: 2.5rem;
       margin-bottom: 40px;
@@ -27,7 +26,6 @@
       color: #d6336c;
       font-weight: bold;
     }
-
     button {
       font-size: 1.6rem;
       padding: 12px 28px;
@@ -39,7 +37,6 @@
       transition: all 0.3s ease;
       user-select: none;
     }
-
     #yes {
       background-color: #4CAF50;
       color: white;
@@ -48,14 +45,12 @@
       transform-origin: center center;
       transform: scale(1);
     }
-
     #no {
       background-color: #f44336;
       color: white;
       left: 55%;
       top: 60%;
     }
-
     #fireworks-container {
       position: fixed;
       pointer-events: none;
@@ -75,7 +70,7 @@
   <button id="no">Hayır</button>
   <div id="fireworks-container"></div>
 
-  <audio id="myAudio" src="https://o.uguu.se/xlMqEmvb.mp3" preload="auto"></audio>
+  <audio id="myAudio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" preload="auto"></audio>
 
   <script>
     const yes = document.getElementById('yes');
@@ -104,8 +99,8 @@
       }
     }
 
-    no.addEventListener('mouseover', kacir);       // Bilgisayar için
-    no.addEventListener('touchstart', kacir);      // Telefon için ✅
+    no.addEventListener('mouseover', kacir);
+    no.addEventListener('touchstart', kacir);
 
     yes.addEventListener('click', () => {
       yes.style.display = 'none';
@@ -113,7 +108,11 @@
       msg.textContent = "OLEYEEEEEY SENİ ÇOOOK SEVİYORUMMMM ❤️🎉";
       msg.style.fontSize = '3rem';
       msg.style.color = '#e91e63';
-      audio.play();
+
+      audio.play().catch(err => {
+        console.log("Ses çalma hatası:", err);
+      });
+
       startFireworks();
     });
 
